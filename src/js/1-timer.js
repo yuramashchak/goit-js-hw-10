@@ -55,12 +55,8 @@ button.addEventListener('click', ()=>{
         timerId = setInterval(()=>{
         const currentTime = new Date();
         const diff = dateNow - currentTime;
-        const toMs = convertMs(diff)
-       daysEl.textContent = addLeadingZero(toMs.days);
-       hoursEl.textContent = addLeadingZero(toMs.hours);
-       minutesEl.textContent = addLeadingZero(toMs.minutes);
-       secondsEl.textContent = addLeadingZero(toMs.seconds);
-       if (diff <= 0) {
+
+          if (diff <= 0) {
   clearInterval(timerId);
 
   daysEl.textContent = "00";
@@ -74,6 +70,13 @@ button.addEventListener('click', ()=>{
 
   return;
 }
+
+        const toMs = convertMs(diff)
+       daysEl.textContent = addLeadingZero(toMs.days);
+       hoursEl.textContent = addLeadingZero(toMs.hours);
+       minutesEl.textContent = addLeadingZero(toMs.minutes);
+       secondsEl.textContent = addLeadingZero(toMs.seconds);
+       
     }, 1000)
 
     

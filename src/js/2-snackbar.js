@@ -3,26 +3,22 @@ import "izitoast/dist/css/iziToast.min.css";
 
 let delay = 0;
 
-const input_text = document.querySelector('.inputText')
-const rejected = document.querySelector('[value="rejected"]');
-const fulfilled = document.querySelector('[value="fulfilled"]');
-
 const form = document.querySelector('.form');
-
-const submitNewMessage = document.querySelector('.submitMessage')
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
-    createPromise(delay);
-})
-input_text.addEventListener('input', (e)=>{
-    delay = Number(e.target.value)
+
+    delay = Number(e.target.elements.delay.value);
+    const state = e.target.elements.state.value;
+
+    createPromise(delay, state);
 })
 
 
-function createPromise(delay) {
+
+function createPromise(delay, state) {
     const promise = new Promise((res, rej) => {
         setTimeout(()=>{
-        if (rejected.checked) {
+        if (state === 'rejected') {
             rej(delay);
         } else {
             res(delay);
